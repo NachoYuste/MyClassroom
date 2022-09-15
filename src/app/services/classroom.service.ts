@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Classroom } from './classroom';
-import { Student } from './student';
+import { Classroom } from '../models/classroom';
+import { Student } from '../models/student';
 import { StudentService } from './student.service';
 
 @Injectable({
