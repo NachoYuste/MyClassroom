@@ -7,13 +7,13 @@
         <form class="dropdown-menu p-4">
           <div class="mb-3">
             <label for="exampleDropdownFormEmail2" class="form-label">Nombre del aula</label>
-            <input type="text" class="form-control" id="exampleDropdownFormEmail2" placeholder="Escribe nombre del aula">
+            <input type="text" class="form-control" id="exampleDropdownFormEmail2" placeholder="Escribe nombre del aula" [(ngModel)] = "classroom.nombre"/>
           </div>
           <div class="mb-3">
             <label for="exampleDropdownFormPassword2" class="form-label">Imagen</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2" placeholder="Escribe URL de la imagen">
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2" placeholder="Escribe URL de la imagen" [(ngModel)] = "classroom.img"/>
           </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary" (click)="addClassroom()">Guardar</button>
         </form>
       </div>
 </div>

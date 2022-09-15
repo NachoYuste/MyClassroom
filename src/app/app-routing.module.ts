@@ -6,8 +6,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
-  {path: '/classroom', component: ClassListComponent},
-  {path: '/classroom/:id', component: StudentListComponent},  
+  {path: 'classroom', component: ClassListComponent},
+  {path: 'classroom/:id', component: StudentListComponent},  
 ];
 
 @NgModule({
