@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
@@ -11,8 +11,9 @@ import { StudentService } from 'src/app/services/student.service';
 export class StudentListComponent implements OnInit {
 
   students: Student[];
-  student: Student = new Student;
+  @Input() student: Student = new Student;
   classroomID: number;
+  
   constructor(public studentService: StudentService, route: ActivatedRoute) {
     this.students = studentService.getStudents();
     this.classroomID = parseInt(route.snapshot.paramMap.get('id')!);
