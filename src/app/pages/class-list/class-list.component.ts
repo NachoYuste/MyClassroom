@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Classroom } from 'src/app/models/classroom';
 import { ClassroomService } from 'src/app/services/classroom.service';
 
@@ -10,7 +10,7 @@ import { ClassroomService } from 'src/app/services/classroom.service';
 export class ClassListComponent implements OnInit {
 
   classrooms: Classroom[];
-  classroom: Classroom = new Classroom;
+  @Input() classroom: Classroom = new Classroom;
 
   constructor(public classroomService: ClassroomService) {
     this.classrooms = classroomService.getClassrooms();
