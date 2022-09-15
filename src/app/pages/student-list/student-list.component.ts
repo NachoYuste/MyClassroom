@@ -31,6 +31,7 @@ export class StudentListComponent implements OnInit {
     //Add student to classroom
     let classroom = this.classroomService.getClassroom(this.classroomID);
     classroom.students.push(this.student);
+    this.classroomService.editClassroom(classroom);
   }
 
   editStudent(){
