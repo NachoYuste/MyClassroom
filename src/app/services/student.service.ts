@@ -10,12 +10,8 @@ export class StudentService {
   constructor() { }
 
 
-  editStudent(student: Student, name: string, email: string, dni: string, img: string): Student{
-    student.name = name;
-    student.email = email;
-    student.dni = dni;
-    student.img = img;
-
+  editStudent(student: Student): Student{
+  
     this.students = this.getStudents();
 
     let updateStudent = this.students.find(update => update.id == student.id)!;
