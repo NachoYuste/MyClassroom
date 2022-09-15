@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ClassListComponent } from './pages/class-list/class-list.component';
 import { StudentListComponent } from './pages/student-list/student-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StudentListComponent } from './pages/student-list/student-list.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
