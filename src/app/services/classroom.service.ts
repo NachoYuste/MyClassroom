@@ -63,7 +63,7 @@ export class ClassroomService {
   }
 
   editStudent(student: Student, name: string, email: string, dni: string, img: string,studentService: StudentService){
-    studentService.editStudent(student, name, email, dni, img);
+    studentService.editStudent(student);
   }
 
   deleteStudent(student: Student, studentService: StudentService){
