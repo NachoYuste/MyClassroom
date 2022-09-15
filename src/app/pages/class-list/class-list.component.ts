@@ -10,7 +10,7 @@ import { ClassroomService } from 'src/app/services/classroom.service';
 export class ClassListComponent implements OnInit {
 
   classrooms: Classroom[];
-  @Input() classroom: Classroom = new Classroom;
+  classroom: Classroom = new Classroom();
 
   constructor(public classroomService: ClassroomService) {
     this.classrooms = classroomService.getClassrooms();
@@ -18,10 +18,12 @@ export class ClassListComponent implements OnInit {
 
   addClassroom(){
     //Set classroom ID
+    console.log("en add classroom")
     this.classroom.id = this.classrooms.length + 1;
 
     //Add classroom
     this.classroomService.addClassroom(this.classroom);
+    this.classrooms = this.classroomService.getClassrooms()
   }
 
   editClassroom(){
