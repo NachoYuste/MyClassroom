@@ -17,11 +17,21 @@ export class ClassListComponent implements OnInit {
   }
 
   addClassroom(){
+    //Set classroom ID
+    this.classroom.id = this.classrooms.length + 1;
+
+    //Add classroom
     this.classroomService.addClassroom(this.classroom);
   }
+
+  editClassroom(){
+    this.classroom = this.classroomService.editClassroom(this.classroom);
+  }
+
+  deleteClassroom(){
+    this.classroomService.deleteClassroom(this.classroom);
+  }
   
-
-
   ngOnInit(): void {
   }
 

@@ -11,24 +11,6 @@ export class ClassroomService {
   classrooms: Classroom[] = [];
   constructor() { }
 
-  editClassroom(classroom: Classroom, name: string, img: string):Classroom{
-    classroom.name = name;
-    classroom.img = img;
-
-    //Get classrooms
-    this.classrooms = this.getClassrooms();
-
-    //Edit classroom
-    let updateClassroom = this.classrooms.find(update => update.id == classroom.id)!;
-    let index = this.classrooms.indexOf(updateClassroom);
-    this.classrooms[index] = classroom;
-
-    //Update classrooms in local storage
-    localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
-
-    return classroom;
-  }
-
   getClassrooms(): Classroom[] {
     if (localStorage.getItem("classrooms")!= undefined){
       this.classrooms = JSON.parse(localStorage.getItem("classrooms")!);
@@ -48,6 +30,22 @@ export class ClassroomService {
     this.classrooms.push (classroom);
     localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
   }
+
+  editClassroom(classroom: Classroom):Classroom{
+    //Get classrooms
+    this.classrooms = this.getClassrooms();
+
+    //Edit classroom
+    let updateClassroom = this.classrooms.find(update => update.id == classroom.id)!;
+    let index = this.classrooms.indexOf(updateClassroom);
+    this.classrooms[index] = classroom;
+
+    //Update classrooms in local storage
+    localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
+
+    return classroom;
+  }
+
 
   deleteClassroom(classroom: Classroom){
     //Get classrooms
