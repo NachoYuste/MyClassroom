@@ -1,6 +1,6 @@
 export class Student {
     id: number;
-    classroom: number;
+    classroomID: number;
     name: string;
     email: string;
     dni: string;
@@ -8,7 +8,7 @@ export class Student {
 
     constructor(id: number, classroom: number, name: string, email: string, dni: string, img: string){
         this.id = id;
-        this.classroom = classroom;
+        this.classroomID = classroom;
         this.name = name;
         this.email = email;
         this.dni = dni;

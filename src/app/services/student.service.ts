@@ -10,7 +10,7 @@ export class StudentService {
   constructor() { }
 
 
-  editStudents(student: Student, name: string, email: string, dni: string, img: string): Student{
+  editStudent(student: Student, name: string, email: string, dni: string, img: string): Student{
     student.name = name;
     student.email = email;
     student.dni = dni;
@@ -27,7 +27,7 @@ export class StudentService {
     return student;
   }
 
-  deleteStudents(student: Student){
+  deleteStudent(student: Student){
     this.students = this.getStudents();
 
     let deletedStudentList = this.students.filter(update => update.id != student.id);

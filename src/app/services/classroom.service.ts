@@ -19,7 +19,7 @@ export class ClassroomService {
     this.classrooms = this.getClassrooms();
 
     //Edit classroom
-    let updateClassroom = this.classrooms.find(updateClassrrom => updateClassrrom.id == classroom.id)!;
+    let updateClassroom = this.classrooms.find(update => update.id == classroom.id)!;
     let index = this.classrooms.indexOf(updateClassroom);
     this.classrooms[index] = classroom;
 
@@ -49,17 +49,26 @@ export class ClassroomService {
     localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
   }
 
+  deleteClassroom(classroom: Classroom){
+    //Get classrooms
+    this.classrooms = this.getClassrooms();
+
+    //Delet classroom in array
+    let deletedClassroomList = this.classrooms.filter(update => update.id != classroom.id);
+    localStorage.setItem("classrooms", JSON.stringify(deletedClassroomList));
+  }
+
   //Student Service calls
 
   addStudent(student: Student, studenService: StudentService){
     studenService.addStudent(student);
   }
 
-  editStudent(student: Student, studentService: StudentService){
-    studentService.editStudent(student);
+  editStudent(student: Student, name: string, email: string, dni: string, img: string,studentService: StudentService){
+    studentService.editStudent(student, name, email, dni, img);
   }
 
   deleteStudent(student: Student, studentService: StudentService){
-    studentService.delete(student);
+    studentService.deleteStudent(student);
   }
 }
