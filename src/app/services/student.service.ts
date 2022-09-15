@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../models/student';
+import { ClassroomService } from './classroom.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Student } from '../models/student';
 export class StudentService {
 
   students: Student[] = [];
-  constructor() { }
+  constructor(public classroomService: ClassroomService) { }
 
 
   editStudent(student: Student): Student{
@@ -46,10 +47,21 @@ export class StudentService {
 
   }
 
-  addStudent(student: Student){
-    this.students = this.getStudents();
-    this.students.push(student);
+  addStudent(student: Student): Student[]{
+
+    //Add student id
+    let studentsList = this.getStudents();
+    student.id = studentsList.length + 1;
+
+    //Add student to classroom
+    let classroom = this.classroomService.getClassroom(student.classroomID);
+    classroom.students.push(student);
+    this.classroomService.editClassroom(classroom);
+
+    //Add studen to BD
+    studentsList.push(student);
     localStorage.setItem("students", JSON.stringify(this.students));
 
+    return studentsList;
   }
 }

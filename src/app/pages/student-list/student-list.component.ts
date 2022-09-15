@@ -22,16 +22,8 @@ export class StudentListComponent implements OnInit {
    }
 
   addStudent(){
-    //Add student
-    this.student.id = this.students.length + 1;
     this.student.classroomID = this.classroomID;
-
-    this.studentService.addStudent(this.student);
-
-    //Add student to classroom
-    let classroom = this.classroomService.getClassroom(this.classroomID);
-    classroom.students.push(this.student);
-    this.classroomService.editClassroom(classroom);
+    this.students = this.studentService.addStudent(this.student);
   }
 
   editStudent(){

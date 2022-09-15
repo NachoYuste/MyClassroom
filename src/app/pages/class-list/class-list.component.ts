@@ -17,13 +17,8 @@ export class ClassListComponent implements OnInit {
   }
 
   addClassroom(){
-    //Set classroom ID
-    console.log("en add classroom")
-    this.classroom.id = this.classrooms.length + 1;
-
     //Add classroom
-    this.classroomService.addClassroom(this.classroom);
-    this.classrooms = this.classroomService.getClassrooms()
+    this.classrooms = this.classroomService.addClassroom(this.classroom);
   }
 
   editClassroom(){

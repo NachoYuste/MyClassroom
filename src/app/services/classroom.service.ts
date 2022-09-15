@@ -25,22 +25,29 @@ export class ClassroomService {
     return this.classrooms.find(classroom => classroom.id == id)!;
   }
 
-  addClassroom(classroom: Classroom){
+  addClassroom(classroom: Classroom): Classroom[]{
     this.classrooms = this.getClassrooms();
+    
+    //Set classroom ID
+    classroom.id = this.classrooms.length + 1;
+
+    //Add classroom to DB
     this.classrooms.push (classroom);
     localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
+
+    return this.classrooms;
   }
 
   editClassroom(classroom: Classroom):Classroom{
     //Get classrooms
     this.classrooms = this.getClassrooms();
-
+    
     //Edit classroom
     let updateClassroom = this.classrooms.find(update => update.id == classroom.id)!;
     let index = this.classrooms.indexOf(updateClassroom);
     this.classrooms[index] = classroom;
 
-    //Update classrooms in local storage
+    //Update classrooms in DB
     localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
 
     return classroom;
