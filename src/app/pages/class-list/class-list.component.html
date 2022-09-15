@@ -7,11 +7,11 @@
         <form class="dropdown-menu p-4">
           <div class="mb-3">
             <label for="exampleDropdownFormEmail2" class="form-label">Nombre del aula</label>
-            <input type="text" class="form-control" id="exampleDropdownFormEmail2" placeholder="Escribe nombre del aula" [(ngModel)] = "classroom.nombre"/>
+            <input type="text" class="form-control" id="exampleDropdownFormEmail2" placeholder="Escribe nombre del aula" [(ngModel)]="classroom.name" name="classroom.name" />
           </div>
           <div class="mb-3">
             <label for="exampleDropdownFormPassword2" class="form-label">Imagen</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2" placeholder="Escribe URL de la imagen" [(ngModel)] = "classroom.img"/>
+            <input type="text" class="form-control" id="exampleDropdownFormPassword2" placeholder="Escribe URL de la imagen" [(ngModel)] = "classroom.img"  name="classroom.img" />
           </div>
             <button type="submit" class="btn btn-primary" (click)="addClassroom()">Guardar</button>
         </form>
@@ -20,43 +20,13 @@
 
 <div class="container text-center">
   <div class="row row-cols-3">
-    <div class="col">
+    <div class="col"  *ngFor="let classroom of classrooms">
       <div class="card" style="width: 18rem;">
-        <img src="https://images.ecestaticos.com/d29IfiyQiu7KzO3jfvhLIsnY_Mg=/1x111:2120x1302/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F8a2%2F206%2F0db%2F8a22060db9653f2124114dc9feacc06a.jpg" class="..." alt="...">
+        <img src= {{classroom.img}} class="..." alt="...">
         <div class="card-body">
-          <h5 class="card-title">Clase 1.1</h5>
-          <p class="card-text">15 alumnos</p>
-          <a href="" class="btn btn-primary">Entrar a la clase</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://images.ecestaticos.com/d29IfiyQiu7KzO3jfvhLIsnY_Mg=/1x111:2120x1302/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F8a2%2F206%2F0db%2F8a22060db9653f2124114dc9feacc06a.jpg" class="..." alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Clase 1.1</h5>
-          <p class="card-text">15 alumnos</p>
-          <a href="" class="btn btn-primary">Entrar a la clase</a>
-        </div>
-      </div> 
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://images.ecestaticos.com/d29IfiyQiu7KzO3jfvhLIsnY_Mg=/1x111:2120x1302/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F8a2%2F206%2F0db%2F8a22060db9653f2124114dc9feacc06a.jpg" class="..." alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Clase 1.1</h5>
-          <p class="card-text">15 alumnos</p>
-          <a href="" class="btn btn-primary">Entrar a la clase</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <img src="https://images.ecestaticos.com/d29IfiyQiu7KzO3jfvhLIsnY_Mg=/1x111:2120x1302/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F8a2%2F206%2F0db%2F8a22060db9653f2124114dc9feacc06a.jpg" class="..." alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Clase 1.1</h5>
-          <p class="card-text">15 alumnos</p>
-          <a href="" class="btn btn-primary">Entrar a la clase</a>
+          <h5 class="card-title">{{classroom.name}}</h5>
+          <p class="card-text">{{classroom.students.length}}</p>
+          <a [routerLink]="['/{{classroom.id}}']" class="btn btn-primary">Ver</a>
         </div>
       </div>
     </div>
