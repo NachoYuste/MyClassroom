@@ -1,34 +1,41 @@
 <div class="d-grid gap-2 d-md-block">
-    <div class="dropdown">
-        <h2>Lista de aulas</h2>
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-          Añadir aula
-        </button>
-        <form class="dropdown-menu p-4">
-          <div class="mb-3">
-            <label for="exampleDropdownFormEmail2" class="form-label">Nombre del aula</label>
-            <input type="text" class="form-control" id="exampleDropdownFormEmail2" placeholder="Escribe nombre del aula" [(ngModel)]="classroom.name" name="classroom.name" />
-          </div>
-          <div class="mb-3">
-            <label for="exampleDropdownFormPassword2" class="form-label">Imagen</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword2" placeholder="Escribe URL de la imagen" [(ngModel)] = "classroom.img"  name="classroom.img" />
-          </div>
-            <button type="submit" class="btn btn-primary" (click)="addClassroom()">Guardar</button>
-        </form>
-      </div>
+  <div class="row">
+       <div class="col-md">
+           <h2 class="text-center">Lista de aulas</h2>
+       </div>
+       <div class="col-md">
+           <div class="dropdown">
+               <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+               Añadir aula
+               </button>
+               <form class="dropdown-menu p-4">
+               <div class="mb-3">
+                   <label for="exampleDropdownFormEmail2" class="form-label">Nombre del aula</label>
+                   <input type="text" class="form-control" id="exampleDropdownFormEmail2" placeholder="Escribe nombre del aula">
+               </div>
+               <div class="mb-3">
+                   <label for="exampleDropdownFormPassword2" class="form-label">Imagen</label>
+                   <input type="text" class="form-control" id="exampleDropdownFormPassword2" placeholder="Escribe URL de la imagen">
+               </div>
+                   <button type="submit" class="btn btn-primary" (click)="addClassroom()">Guardar</button>
+               </form>
+           </div>
+       </div>
+   </div>
 </div>
 
 <div class="container text-center">
   <div class="row row-cols-3">
-    <div class="col"  *ngFor="let classroom of classrooms">
+    <div class="col" *ngFor="let classroom of classrooms">
       <div class="card" style="width: 18rem;">
-        <img src= {{classroom.img}} class="..." alt="...">
+        <img src="{{classroom.img}}" class="..." alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{classroom.name}}</h5>
-          <p class="card-text">{{classroom.students.length}}</p>
-          <a [routerLink]="['/{{classroom.id}}']" class="btn btn-primary">Ver</a>
+         <h5 class="card-title">{{classroom.name}}</h5>
+         <p class="card-text">{{classroom.students.length}}</p>
+         <a [routerLink]="['/{{classroom.id}}']" class="btn btn-primary">Entrar a la clase</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+  
