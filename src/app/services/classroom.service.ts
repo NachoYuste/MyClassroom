@@ -11,24 +11,6 @@ export class ClassroomService {
   classrooms: Classroom[] = [];
   constructor() { }
 
-  editClassroom(classroom: Classroom, name: string, img: string):Classroom{
-    classroom.name = name;
-    classroom.img = img;
-
-    //Get classrooms
-    this.classrooms = this.getClassrooms();
-
-    //Edit classroom
-    let updateClassroom = this.classrooms.find(updateClassrrom => updateClassrrom.id == classroom.id)!;
-    let index = this.classrooms.indexOf(updateClassroom);
-    this.classrooms[index] = classroom;
-
-    //Update classrooms in local storage
-    localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
-
-    return classroom;
-  }
-
   getClassrooms(): Classroom[] {
     if (localStorage.getItem("classrooms")!= undefined){
       this.classrooms = JSON.parse(localStorage.getItem("classrooms")!);
@@ -49,17 +31,42 @@ export class ClassroomService {
     localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
   }
 
+  editClassroom(classroom: Classroom):Classroom{
+    //Get classrooms
+    this.classrooms = this.getClassrooms();
+
+    //Edit classroom
+    let updateClassroom = this.classrooms.find(update => update.id == classroom.id)!;
+    let index = this.classrooms.indexOf(updateClassroom);
+    this.classrooms[index] = classroom;
+
+    //Update classrooms in local storage
+    localStorage.setItem("classrooms", JSON.stringify(this.classrooms));
+
+    return classroom;
+  }
+
+
+  deleteClassroom(classroom: Classroom){
+    //Get classrooms
+    this.classrooms = this.getClassrooms();
+
+    //Delet classroom in array
+    let deletedClassroomList = this.classrooms.filter(update => update.id != classroom.id);
+    localStorage.setItem("classrooms", JSON.stringify(deletedClassroomList));
+  }
+
   //Student Service calls
 
   addStudent(student: Student, studenService: StudentService){
     studenService.addStudent(student);
   }
 
-  editStudent(student: Student, studentService: StudentService){
+  editStudent(student: Student, name: string, email: string, dni: string, img: string,studentService: StudentService){
     studentService.editStudent(student);
   }
 
   deleteStudent(student: Student, studentService: StudentService){
-    studentService.delete(student);
+    studentService.deleteStudent(student);
   }
 }

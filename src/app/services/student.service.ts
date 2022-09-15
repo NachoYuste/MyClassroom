@@ -10,6 +10,26 @@ export class StudentService {
   constructor() { }
 
 
+  editStudent(student: Student): Student{
+  
+    this.students = this.getStudents();
+
+    let updateStudent = this.students.find(update => update.id == student.id)!;
+    let index = this.students.indexOf(updateStudent);
+    this.students[index] = student;
+
+    localStorage.setItem("students", JSON.stringify(this.students));
+
+    return student;
+  }
+
+  deleteStudent(student: Student){
+    this.students = this.getStudents();
+
+    let deletedStudentList = this.students.filter(update => update.id != student.id);
+    localStorage.setItem("students", JSON.stringify(deletedStudentList));
+  }
+
 
   getStudents(): Student[]{
     if (localStorage.getItem("students")!=undefined){
